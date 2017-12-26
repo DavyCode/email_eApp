@@ -1,0 +1,18 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "engines": {
+    "node":"8.9.3",
+    "npm": "5.5.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Azemoh David Paul",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
