@@ -7,21 +7,31 @@ const   express = require('express'),
 
 
 passport.use(
-    new GoogleStrategy({
-        clientID: keys.googleClientID,
-        clientSecret: keys.googleClientSecret,
-        callbackURL :'/auth/google/callback'
-    }, () =>{
-         console.log(accessToken);
-    })
+    new GoogleStrategy(
+        {
+            clientID: keys.googleClientID,
+            clientSecret: keys.googleClientSecret,
+            callbackURL :'/auth/google/callback'
+        }, 
+        (accessToken) => {
+            console.log(accessToken);
+        }
+    )
 );
 
 
-app.get('/', (req, res) => {
-    res.send({HI : "Hello Dave"})
-})
+app.get(
+    '/auth/google',
+    passport.authenticate('google', {
+        scope :['profile', 'email']
+    })
+);
 
+app.get(
+    '/auth/google/callback',
+    passport.authenticate('google')
+);
 
 app.listen(PORT, ( ) => {
-    console.log("server up on PORT 3000!!")
+    console.log("***server up on PORT 3000!!***")
 });
