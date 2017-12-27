@@ -2,8 +2,8 @@ const   express = require('express'),
         mongoose = require('mongoose');
         app = express(), 
         PORT = process.env.PORT || 3000;
-require('./services/passport');
 require('./models/User');
+require('./services/passport');
   
 
 //DATABASE CONNECTION
