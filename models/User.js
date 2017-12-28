@@ -7,7 +7,7 @@ var UserSchema = new Schema({
     googleId:  String,
     facebookId:  String,
     githubId: String,
-    password  :  String,
+    password: String,
     username: String
 });
 

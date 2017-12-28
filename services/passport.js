@@ -1,5 +1,6 @@
 const   passport = require('passport'),
-        GoogleStrategy = require('passport-google-oauth20').Strategy
+        GoogleStrategy = require('passport-google-oauth20').Strategy,
+        FacebookStrategy = require('passport-facebook').Strategy,
         passportLocalMongoose = require('passport-local-mongoose'),
         LocalStrategy = require('passport-local'),
         mongoose = require('mongoose'),
@@ -18,7 +19,9 @@ passport.deserializeUser((id, done) => {
         })
 })
 
+  //========
 //GOOGLE Oauth
+//======================
 passport.use(
     new GoogleStrategy(
         {
@@ -43,7 +46,38 @@ passport.use(
     )
 );
 
+ //========
+//FACEBOOK Oauth
+//==========================
+passport.use(
+    new FacebookStrategy({
+        clientID: keys.facebookClientID,
+        clientSecret:keys.facebookClientSecret,
+        callbackURL: '/auth/facebook/callback',
+        profileFields: ['id', 'displayName', 'photos', 'email']
+        },
+        (accessToken, refreshToken, profile, done) => {
+            console.log(accessToken, refreshToken, profile);
+            User.findOne({ facebookId: profile.id})
+                .then((existingUser) => {
+                    if(existingUser) {
+                        //user exist with the give ID
+                        done(null, existingUser);
+                    }else{
+                        //no user with given ID Create new User
+                        new User({ facebookId : profile.id})
+                            .save()
+                            .then(user => done(null, user));
+                    };
+                });
+        }
+    )
+);
 
-//LOCAL AUTH
+
+
+ //========
+//LOCAL auth
+//==========================
 passport.use(
     new LocalStrategy(User.authenticate()));

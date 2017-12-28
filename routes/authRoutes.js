@@ -20,7 +20,11 @@ module.exports = (app) => {
 
     app.get(
         '/auth/google/callback',
-        passport.authenticate('google')
+        passport.authenticate('google', { failureRedirect: '/auth/login' }),
+        (req, res) => {
+          // Successful authentication, redirect home.
+          res.redirect('/');
+        }
     );
 
     app.get('/api/current_user', (req, res) => {
@@ -29,10 +33,28 @@ module.exports = (app) => {
 
 
     // ========
-// Local Auth Routes
-// ====================
-    
+// Facebook Oauth Routes
+// ====================================== 
+    app.get(
+        '/auth/facebook',
+        passport.authenticate('facebook',{
+            scope : ['public_profile', 'email','user_location','user_about_me']
+        })
+    );
 
+    app.get(
+        '/auth/facebook/callback', 
+        passport.authenticate('facebook', { failureRedirect: '/auth/login' }),
+        (req, res) => {
+            res.redirect('/');
+        }
+    );
+
+
+
+    // ========
+// Local Auth Routes
+// ==========================================
     app.get('/auth/register', (req, res) => {
         res.render('user/register');
     });
@@ -68,4 +90,7 @@ module.exports = (app) => {
         req.logout();
         res.redirect('/');
     })
+
+
+
 }
