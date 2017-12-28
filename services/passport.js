@@ -1,5 +1,7 @@
 const   passport = require('passport'),
         GoogleStrategy = require('passport-google-oauth20').Strategy
+        passportLocalMongoose = require('passport-local-mongoose'),
+        LocalStrategy = require('passport-local'),
         mongoose = require('mongoose'),
         keys = require('../config/keys'),
         User = mongoose.model('Users'); //user model class
@@ -16,7 +18,7 @@ passport.deserializeUser((id, done) => {
         })
 })
 
-
+//GOOGLE Oauth
 passport.use(
     new GoogleStrategy(
         {
@@ -40,3 +42,8 @@ passport.use(
            }
     )
 );
+
+
+//LOCAL AUTH
+passport.use(
+    new LocalStrategy(User.authenticate()));

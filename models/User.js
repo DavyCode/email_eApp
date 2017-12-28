@@ -1,9 +1,16 @@
 const mongoose = require('mongoose'),
-      { Schema } = mongoose;
+      { Schema } = mongoose,
+      passportLocalMongoose = require('passport-local-mongoose');
 
 
 var UserSchema = new Schema({
-    googleId  :  String
+    googleId:  String,
+    facebookId:  String,
+    githubId: String,
+    password  :  String,
+    username: String
 });
 
+UserSchema.plugin(passportLocalMongoose);
 mongoose.model('Users', UserSchema);
+
