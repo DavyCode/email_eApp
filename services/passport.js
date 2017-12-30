@@ -9,71 +9,64 @@ const   passport = require('passport'),
 
 
      
-passport.serializeUser((user, done) => {
+passport.serializeUser(
+  (user, done) => {
     done(null, user.id); //user.id database generated Id
 });
-passport.deserializeUser((id, done) => {
-    User.findById(id)
-        .then(user =>  {
-            done(null, user);
-        })
+passport.deserializeUser(
+  async (id, done) => {
+  const user = await User.findById(id)
+  done(null, user);
 })
 
   //========
 //GOOGLE Oauth
 //======================
 passport.use(
-    new GoogleStrategy(
-        {
-            clientID: keys.googleClientID,
-            clientSecret: keys.googleClientSecret,
-            callbackURL :'/auth/google/callback',
-            proxy : true
-        }, 
-        (accessToken, refreshToken, profile, done) => {
-            User.findOne({ googleId: profile.id})
-                .then((existingUser) => {
-                    if(existingUser) {
-                        //user exist with the give ID
-                        done(null, existingUser);
-                    }else{
-                        //no user with given ID Create new User
-                        new User({ googleId : profile.id})
-                            .save()
-                            .then(user => done(null, user));
-                    }
-                })
-           }
-    )
+  new GoogleStrategy(
+    {
+      clientID: keys.googleClientID,
+      clientSecret: keys.googleClientSecret,
+      callbackURL :'/auth/google/callback',
+      proxy : true
+    }, 
+    async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({ googleId: profile.id})
+        if(existingUser) {
+              //user exist with the give ID
+          return done(null, existingUser);
+        }
+            //no user with given ID Create new User
+          const user = await new User({ googleId : profile.id}).save()
+          done(null, user);
+    }
+  )
 );
 
  //========
 //FACEBOOK Oauth
 //==========================
 passport.use(
-    new FacebookStrategy({
-        clientID: keys.facebookClientID,
-        clientSecret:keys.facebookClientSecret,
-        callbackURL: '/auth/facebook/callback',
-        profileFields: ['id', 'displayName', 'photos', 'email'],
-        proxy : true
-        },
-        (accessToken, refreshToken, profile, done) => {
+  new FacebookStrategy(
+    {
+      clientID: keys.facebookClientID,
+      clientSecret:keys.facebookClientSecret,
+      callbackURL: '/auth/facebook/callback',
+      profileFields: ['id', 'displayName', 'photos', 'email'],
+      proxy : true
+    },
+    async (accessToken, refreshToken, profile, done) => {
             console.log(accessToken, refreshToken, profile);
-            User.findOne({ facebookId: profile.id})
-                .then((existingUser) => {
-                    if(existingUser) {
-                        //user exist with the give ID
-                        done(null, existingUser);
-                    }else{
-                        //no user with given ID Create new User
-                        new User({ facebookId : profile.id})
-                            .save()
-                            .then(user => done(null, user));
-                    };
-                });
+      const existingUser = await User.findOne({ facebookId: profile.id})
+        if(existingUser) {
+            //user exist with the give ID
+          return done(null, existingUser);
         }
-    )
+          //no user with given ID Create new User
+          new User({ facebookId : profile.id}).save()
+          done(null, user);
+    }
+  )
 );
 
 

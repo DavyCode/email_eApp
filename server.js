@@ -19,6 +19,7 @@ mongoose.connect(keys.mongoURI,(err) => {
 app.use(bodyParser.urlencoded({ extended: true }));
 //default engine
 app.set("view engine", "ejs");
+
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public"));
 
