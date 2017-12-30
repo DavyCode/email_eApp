@@ -5,7 +5,7 @@ const   express = require('express'),
         passport = require('passport'),
         bodyParser = require("body-parser"),
         app = express(), 
-        PORT = process.env.PORT || 3000;
+        PORT = process.env.PORT || 3001;
 require('./models/User');
 require('./services/passport');
   
@@ -23,11 +23,11 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public"));
 
 //COOKIE SESSION
-app.use(
-    cookieSession({
-        maxAge: 30 * 24 * 60 * 60 * 1000,
-        keys: [keys.cookieKey]
-}));
+// app.use(
+//     cookieSession({
+//         maxAge: 30 * 24 * 60 * 60 * 1000,
+//         keys: [keys.cookieKey]
+// }));
 //EXPRESS SESSION 
 app.use(
     require('express-session')({
@@ -43,4 +43,4 @@ require('./routes/authRoutes')(app);
 
 
 
-app.listen(PORT, () => console.log("***server up on PORT 3000!!***"));
+app.listen(PORT, () => console.log("***server up on PORT 3001!!***"));
