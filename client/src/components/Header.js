@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 //auth button markup
 const authMarkup = () => {
   return (
     <div>
-      <li><a href="/auth/login">Login</a></li>
-      <li><a href="/auth/register">Sign up</a></li>
-      <li><a href="/auth/google">Login with Google</a></li>
-      <li><a href="/auth/facebook">Login with Facebook</a></li>
+    <li><Link to="/auth/login">Login</Link></li>
+      <li><Link to="/auth/register">Sign up</Link></li>
+      <li><Link to="/auth/google">Login with Google</Link></li>
+      <li><Link to="/auth/facebook">Login with Facebook</Link></li>
     </div>
   );
 };
@@ -23,7 +24,7 @@ class Header extends Component {
       case false:  
         return authMarkup();
       default:
-        return <li><a href="/api/logout">Logout</a></li>;
+        return <li><Link to="/api/logout">Logout</Link></li>;
     }
   };
 
@@ -32,7 +33,12 @@ class Header extends Component {
       <div>
         <nav>
           <div className="nav-wrapper">
-            <a href="/" className="left brand-logo">Emaily-Survey</a>
+            <Link 
+              to={this.props.auth? '/surveys' : '/'} 
+              className="left brand-logo"
+            >
+              Emaily-Survey
+            </Link>
             <ul id="nav-mobile" className="right ">
               {this.renderContent()}
               
