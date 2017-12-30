@@ -4,7 +4,8 @@ module.exports = (app) => {
     //=====
     //HOME ROUTE
     app.get('/', (req, res) => {
-        res.render('home');
+        res.send("server home")
+        // res.render('home');
     });
     
     app.get('/api/current_user', (req, res) => {
@@ -24,10 +25,12 @@ module.exports = (app) => {
 
     app.get(
         '/auth/google/callback',
-        passport.authenticate('google', { failureRedirect: '/auth/login' }),
-        (req, res) => {
+        passport.authenticate('google', 
+        { 
+            failureRedirect: '/auth/login' 
+        }),(req, res) => {
           // Successful authentication, redirect home.
-          res.redirect('/');
+          res.redirect('/surveys');
         }
     );
 
@@ -36,16 +39,19 @@ module.exports = (app) => {
 // ====================================== 
     app.get(
         '/auth/facebook',
-        passport.authenticate('facebook',{
+        passport.authenticate('facebook',
+        {
             scope : ['public_profile', 'email','user_location','user_about_me']
         })
     );
 
     app.get(
         '/auth/facebook/callback', 
-        passport.authenticate('facebook', { failureRedirect: '/auth/login' }),
-        (req, res) => {
-            res.redirect('/');
+        passport.authenticate('facebook',
+        {
+              failureRedirect: '/auth/login' 
+        }),(req, res) => {
+            res.redirect('/surveys');
         }
     );
 
@@ -55,7 +61,8 @@ module.exports = (app) => {
 // Local Auth Routes
 // ==========================================
     app.get('/auth/register', (req, res) => {
-        res.render('user/register');
+        res.send("server register")
+        // res.render('user/register');
     });
 
     //handle signup logic
@@ -63,7 +70,7 @@ module.exports = (app) => {
         var newUser = new User({ username: req.body.username });
         User.register(newUser, req.body.password, (err, user) => {
             if (err) {
-                return res.render('user/register');
+                return  res.send("server register");
             }
             passport.authenticate('local')(req, res, (user) => {
                 res.redirect('/');
@@ -74,7 +81,7 @@ module.exports = (app) => {
 
     //show login form
     app.get('/auth/login', (req, res) => {
-        res.render('user/login');
+        res.send("server login")
     });
 
     //handle login logic

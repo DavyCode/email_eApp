@@ -10,9 +10,10 @@ const Landing = () => <h2> Landing </h2>;
 
 
 class App extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchUser();
   }
+  
   render() {
     return (
       <div className='container'>
