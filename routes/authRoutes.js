@@ -6,6 +6,10 @@ module.exports = (app) => {
     app.get('/', (req, res) => {
         res.render('home');
     });
+    
+    app.get('/api/current_user', (req, res) => {
+        res.send(req.user)
+    })
 
 
        // ========
@@ -26,11 +30,6 @@ module.exports = (app) => {
           res.redirect('/');
         }
     );
-
-    app.get('/api/current_user', (req, res) => {
-        res.send(req.user)
-    })
-
 
     // ========
 // Facebook Oauth Routes

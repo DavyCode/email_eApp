@@ -6,7 +6,7 @@ class Header extends Component {
       <div>
         <nav>
           <div className="nav-wrapper">
-            <a href="#" className="left brand-logo">Emaily-Survey</a>
+            <a href="/" className="left brand-logo">Emaily-Survey</a>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li><a href="sass.html">Login</a></li>
               <li><a href="badges.html">Login with Google</a></li>
