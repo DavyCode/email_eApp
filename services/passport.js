@@ -12,12 +12,22 @@ const   passport = require('passport'),
 passport.serializeUser(
   (user, done) => {
     done(null, user.id); //user.id database generated Id
-});
+  }
+);
 passport.deserializeUser(
-  async (id, done) => {
-  const user = await User.findById(id)
-  done(null, user);
-})
+  (id, done) => {
+    User.findById(id)
+      .then(user =>  {
+        done(null, user);
+      })
+  }
+);
+
+//   async (id, done) => {
+//   const user = await User.findById(id)
+//   done(null, user);
+// }
+// )
 
   //========
 //GOOGLE Oauth
