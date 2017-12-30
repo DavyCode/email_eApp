@@ -8,8 +8,8 @@ const authMarkup = () => {
     <div>
     <li><Link to="/auth/login">Login</Link></li>
       <li><Link to="/auth/register">Sign up</Link></li>
-      <li><Link to="/auth/google">Login with Google</Link></li>
-      <li><Link to="/auth/facebook">Login with Facebook</Link></li>
+      <li><a href="/auth/google">Login with Google</a></li>
+      <li><a href="/auth/facebook">Login with Facebook</a></li>
     </div>
   );
 };
@@ -24,7 +24,7 @@ class Header extends Component {
       case false:  
         return authMarkup();
       default:
-        return <li><Link to="/api/logout">Logout</Link></li>;
+        return <li><a href="/api/logout">Logout</a></li>;
     }
   };
 
