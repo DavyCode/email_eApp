@@ -27,8 +27,15 @@ class Header extends Component {
       default:
         return [
               <li key="1" ><Billings /></li>,
+              <li key="3">
+                <button
+                  className="disabled btn-flat"
+                >
+                  Credits: {this.props.auth.credits}
+                </button>
+              </li>,
               <li key="2" ><a href="/api/logout">Logout</a></li>
-        ] 
+        ]; 
     }
   };
 
