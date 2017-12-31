@@ -85,17 +85,20 @@ module.exports = (app) => {
     });
 
     //handle login logic
-    app.post('/auth/login', passport.authenticate('local', {
+    app.post('/auth/login', 
+        passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/auth/login'
     }), (req, res) => {});
 
 
     //Logout route
-    app.get('/api/logout', (req, res) => {
-        req.logout();
-        res.redirect('/');
-    })
+    app.get('/api/logout', 
+        (req, res) => {
+            req.logout();
+            res.redirect('/');
+        }
+    )
 
 
 

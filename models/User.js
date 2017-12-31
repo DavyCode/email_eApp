@@ -4,11 +4,11 @@ const mongoose = require('mongoose'),
 
 
 var UserSchema = new Schema({
-    googleId:  String,
-    facebookId:  String,
-    githubId: String,
+    googleId: String,
+    facebookId: String,
     password: String,
-    username: String
+    username: String,
+    credits: { type: Number,default: 0}
 });
 
 UserSchema.plugin(passportLocalMongoose);
