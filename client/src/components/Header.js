@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Billings from './Billings';
 
 //auth button markup
 const authMarkup = () => {
   return (
     <div>
-    <li><Link to="/auth/login">Login</Link></li>
+      <li><Link to="/auth/login">Login</Link></li>
       <li><Link to="/auth/register">Sign up</Link></li>
       <li><a href="/auth/google">Login with Google</a></li>
       <li><a href="/auth/facebook">Login with Facebook</a></li>
@@ -24,9 +25,13 @@ class Header extends Component {
       case false:  
         return authMarkup();
       default:
-        return <li><a href="/api/logout">Logout</a></li>;
+        return [
+              <li key="1" ><Billings /></li>,
+              <li key="2" ><a href="/api/logout">Logout</a></li>
+        ] 
     }
   };
+
 
   render () {
     return (
@@ -40,8 +45,7 @@ class Header extends Component {
               Emaily-Survey
             </Link>
             <ul id="nav-mobile" className="right ">
-              {this.renderContent()}
-              
+              {this.renderContent()}   
             </ul>
           </div>
         </nav>  

@@ -41,6 +41,7 @@ app.use(passport.session());
 
 // AUTHROUTES
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
 
 
 
