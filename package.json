@@ -4,10 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "server": "node server.js",
+    "start": "node server.js",
     "deploy": "now --force",
     "client": "npm run start --prefix client",
-    "start": "concurrently \"nodemon server\" \"npm run client\""
+    "dev": "concurrently \"npm run start\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix && npm run build --prefix client"
   },
   "author": "Azemoh David Paul",
   "license": "MIT",
