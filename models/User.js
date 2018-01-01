@@ -8,7 +8,7 @@ var UserSchema = new Schema({
     facebookId: String,
     password: String,
     username: String,
-    credits: { type: Number,default: 0}
+    credits: { type: Number, default: 0}
 });
 
 UserSchema.plugin(passportLocalMongoose);

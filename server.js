@@ -1,3 +1,5 @@
+import { static } from '../../../../../AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/express';
+
 const   express = require('express'),
         keys = require('./config/keys'),   
         mongoose = require('mongoose'),
@@ -23,19 +25,19 @@ app.set("view engine", "ejs");
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public"));
 
-//COOKIE SESSION
-// app.use(
-//     cookieSession({
-//         maxAge: 30 * 24 * 60 * 60 * 1000,
-//         keys: [keys.cookieKey]
-// }));
-//EXPRESS SESSION 
+// COOKIE SESSION
 app.use(
-    require('express-session')({
-        secret: [keys.cookieKey],
-        resave: false,
-        saveUninitialized: false
+    cookieSession({
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        keys: [keys.cookieKey]
 }));
+//EXPRESS SESSION 
+// app.use(
+//     require('express-session')({
+//         secret: [keys.cookieKey],
+//         resave: false,
+//         saveUninitialized: false
+// }));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -44,5 +46,13 @@ require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+
+    const path = require('path');
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    })
+}
 
 app.listen(PORT, () => console.log("***server up on PORT 3001!!***"));

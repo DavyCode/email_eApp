@@ -31,7 +31,7 @@ class Header extends Component {
                 <button
                   className="disabled btn-flat"
                 >
-                  Credits: {this.props.auth.credits}
+                  Credits : {this.props.auth.credits}
                 </button>
               </li>,
               <li key="2" ><a href="/api/logout">Logout</a></li>
