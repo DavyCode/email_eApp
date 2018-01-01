@@ -3,10 +3,10 @@ const   passport = require('passport');
 module.exports = (app) => {
     //=====
     //HOME ROUTE
-    app.get('/', (req, res) => {
-        res.send("server home")
-        // res.render('home');
-    });
+    // app.get('/', (req, res) => {
+    //     res.send("server home")
+    //     // res.render('home');
+    // });
     
     app.get('/api/current_user', (req, res) => {
         res.send(req.user)
