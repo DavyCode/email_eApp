@@ -1,5 +1,3 @@
-import { static } from '../../../../../AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/express';
-
 const   express = require('express'),
         keys = require('./config/keys'),   
         mongoose = require('mongoose'),
@@ -9,6 +7,7 @@ const   express = require('express'),
         app = express(), 
         PORT = process.env.PORT || 3001;
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
   
 
