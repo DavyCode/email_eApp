@@ -12,6 +12,7 @@ require('./services/passport');
   
 
 //DATABASE CONNECTION
+mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI,(err) => {
     (err) ? console.error(err, 'Error Connecting to Database!'): console.log('DB Connected. Build Something Awesome!');
 });
@@ -40,9 +41,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// AUTHROUTES
+// ROUTES
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 
 if (process.env.NODE_ENV === 'production') {
