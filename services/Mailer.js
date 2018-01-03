@@ -15,6 +15,8 @@ class Mailer extends helper.Mail {
     this.addContent(this.body);
     this.addClickTracking();
     this.addRecipients();
+    // Specify which template you want to use
+    // this.setTemplateId(keys.sendGridTemplateId);
   }
 
 
@@ -22,7 +24,7 @@ class Mailer extends helper.Mail {
     return recipients.map(({ email }) => {
       return new helper.Email(email);
     });
-  };
+  }
 
   addClickTracking() {
      const trackingSettings = new helper.TrackingSettings();
@@ -30,7 +32,7 @@ class Mailer extends helper.Mail {
 
      trackingSettings.setClickTracking(clickTracking);
      this.addTrackingSettings(trackingSettings);
-  };
+  }
 
   addRecipients() {
     const personalize = new helper.Personalization();
@@ -49,12 +51,11 @@ class Mailer extends helper.Mail {
       body: this.toJSON()
     });
 
-    const response = this.sgApi.API(request);
+    const response = await this.sgApi.API(request);
     return response;
   }
 
 };
-
 
 
 module.exports = Mailer;
