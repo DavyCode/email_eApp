@@ -9,5 +9,6 @@ module.exports = {
     stripeSecretKey: process.env.STRIPE_SECRET_KEY,
     sensGridKey: process.env.SEND_GRID_KEY,
     reactStripeKey: process.env.REACT_APP_STRIPE_KEY,
-    sendGridTemplateId: process.env.SENDGRID_TEMPLATE_ID
+    sendGridTemplateId: process.env.SENDGRID_TEMPLATE_ID,
+    redirectDomain: process.env.REDIRECT_DOMAIN
 };
