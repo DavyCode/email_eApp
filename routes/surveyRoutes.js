@@ -17,6 +17,7 @@ module.exports = app => {
   app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
     
+    //possible addition params customer survey redirect url
     const survey = new Survey({
       title,
       subject,
