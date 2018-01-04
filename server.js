@@ -12,7 +12,7 @@ require('./services/passport');
   
 
 //DATABASE CONNECTION
-// mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI,(err) => {
     (err) ? console.error(err, 'Error Connecting to Database!'): console.log('DB Connected. Build Something Awesome!');
 });
