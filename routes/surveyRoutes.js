@@ -1,4 +1,7 @@
-const mongoose = require('mongoose'),
+const _ = require('lodash'),
+      Path = require('path-parser'),
+      { URL } = require('url'),
+      mongoose = require('mongoose'),
       requireLogin = require('../middlewares/requireLogin'),
       requireCredits = require('../middlewares/requireCredits'),
       Mailer = require('../services/Mailer'),
@@ -10,14 +13,16 @@ const Survey = mongoose.model('surveys');
 
 module.exports = app => {
   
-  app.get('/api/surveys/feedback', (req, res) => {
+  app.get('/api/surveys/:id/:yes', (req, res) => {
     res.send('Thanks for your feedback')
   })
 
   app.post('/api/surveys/webhooks', (req, res) => {
-    console.log(req.body);
-    res.send({});
-  })
+    const event = _.map(req.body, (event) => {
+      const pathname = new URL(event.url).pathname;
+      const p = new Path('/api/surveys/:surveyId/:choice');
+    });
+  });
   
   app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
@@ -36,12 +41,9 @@ module.exports = app => {
       try {  
         console.log('The mailer***',mailer)
         await mailer.send();
-        console.log('The survey***',survey)
         await survey.save();
         req.user.credits -= 1;
-        console.log('updated credits*** ',req.user.credits)
         const user = await req.user.save();
-        console.log('the updated user***',user)
         res.send(user);
       }catch (err) {
         res.status(422).send(err);
