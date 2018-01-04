@@ -11,8 +11,9 @@
     "start": "node server.js",
     "deploy": "now --force",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"nodemon start\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "dev": "concurrently \"nodemon start\" \"npm run client\" \" npm run webhook\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "webhook": "forever webhook.js"
   },
   "author": "Azemoh David Paul",
   "license": "MIT",
@@ -32,5 +33,8 @@
     "passport-local-mongoose": "^4.4.0",
     "sendgrid": "^5.2.3",
     "stripe": "^5.4.0"
+  },
+  "devDependencies": {
+    "forever": "^0.15.3"
   }
 }
