@@ -73,7 +73,6 @@ module.exports = app => {
 
     const mailer = new Mailer(survey, surveyTemplate(survey));
       try {  
-        console.log('The mailer***',mailer)
         await mailer.send();
         await survey.save();
         req.user.credits -= 1;
