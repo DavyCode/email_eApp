@@ -5,7 +5,9 @@ import SurveyList from './surveys/SurveyList'
 const Dashboard = () => {
   return (
     <div>
-      Dashboard
+      <div>
+        Make dashboard design with proper profile display
+      </div>
       <SurveyList />
       <div className="fixed-action-btn">
         <Link  to='/surveys/new' className="btn-floating btn-large waves-effect waves-light red">

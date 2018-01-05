@@ -16,6 +16,7 @@ module.exports = app => {
     const surveys = await Survey.find({ _user: req.user.id }).select({ 
       recipients: false })
     res.send(surveys)
+    console.log(res.send(surveys))
   });
   
   app.get('/api/surveys/:surveyId/:choice', (req, res) => {
@@ -23,8 +24,7 @@ module.exports = app => {
   });
 
   app.post('/api/surveys/webhooks', (req, res) => {
-    const p = new Path('/api/surveys/:surveyId/:choice'); 
-    console.log(req.body)
+    const p = new Path('/api/surveys/:surveyId/:choice');
 
     _.chain(req.body)
       .map(({ email, url }) => {
