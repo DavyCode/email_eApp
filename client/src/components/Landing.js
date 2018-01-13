@@ -20,13 +20,12 @@ const Landing = () => {
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
-              <span class="card-title">Card Title</span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
+              <span class="card-title">Survey</span>
+              <p>You have a survey in mind? let us handle it for you while you relax and get notified on how well your business is doing.</p>
             </div>
             <div class="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
+              <a href="">Emaily Survey</a>
+              <a href="">Emaily Survey</a>
             </div>
           </div>
         </div>
@@ -34,13 +33,13 @@ const Landing = () => {
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
-              <span class="card-title">Card Title</span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
+              <span class="card-title">Feedback</span>
+              <p>You want quick feedback on all your campaign and product release? Emaily will deliver immediate feedback from your users right at your door step.
+              </p>
             </div>
             <div class="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
+              <a href="">Emaily Survey</a>
+              <a href="">Emaily Survey</a>
             </div>
           </div>
         </div>

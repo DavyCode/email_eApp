@@ -7,16 +7,16 @@ const Footer = () => {
         <div className="container">
           <div className="row">
             <div className="col l6 s12">
-              <h5 className="white-text">Footer Content</h5>
-              <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              <h5 className="white-text">Emaily</h5>
+              <p className="grey-text text-lighten-4">Feel free to get in touch with us.</p>
             </div>
             <div className="col l4 offset-l2 s12">
-              <h5 className="white-text">Links</h5>
+              <h5 className="white-text">Emaily</h5>
               <ul>
-                <li><a className="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                <li><a className="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                <li><a className="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                <li><a className="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                <li><a className="grey-text text-lighten-3" href="#!">Socials</a></li>
+                <li><a className="grey-text text-lighten-3" href="#!">Socials</a></li>
+                <li><a className="grey-text text-lighten-3" href="#!">Socials</a></li>
+                <li><a className="grey-text text-lighten-3" href="#!">Socials</a></li>
               </ul>
             </div>
           </div>
@@ -24,7 +24,7 @@ const Footer = () => {
         <div className="footer-copyright">
           <div className="container">
           © 2017 Copyright Emaily-Survey
-          <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
+          <a className="grey-text text-lighten-4 right" href="#!">Emaily</a>
           </div>
         </div>
       </footer>
