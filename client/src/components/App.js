@@ -11,13 +11,11 @@ import SurveyNew from './surveys/SurveyNew'
 
 
 
-
-
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
   }
-  
+
   render() {
     return (
       <div className="main-container">
@@ -30,7 +28,7 @@ class App extends Component {
               <Route  path="/surveys/new" component={SurveyNew} />
             </div>
             <Footer />
-          </div> 
+          </div>
         </BrowserRouter>
       </div>
     )
