@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Billings from './Billings';
 
+// <li><Link to="/auth/login">Login</Link></li>
+// <li><Link to="/auth/register">Sign up</Link></li>
+
 //auth button markup
 const authMarkup = () => {
   return (
     <div>
-      <li><Link to="/auth/login">Login</Link></li>
-      <li><Link to="/auth/register">Sign up</Link></li>
       <li><a href="/auth/google">Login with Google</a></li>
       <li><a href="/auth/facebook">Login with Facebook</a></li>
     </div>

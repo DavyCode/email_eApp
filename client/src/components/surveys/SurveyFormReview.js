@@ -5,6 +5,8 @@ import formFields from './formFields';
 import * as actions from '../../actions'
 
 const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
+
+  //Render form fields value
   const reviewFields = formFields.map( ({name, label}) => {
     return (
       <div key={name}>
@@ -30,7 +32,7 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
         <i className="material-icons right">email</i>
       </button>
     </div>
-  ); 
+  );
 }
 
 
