@@ -24,3 +24,15 @@
     margin: 30px;
     margin-bottom: 10rem;
   }
+
+  nav {
+    background-color: #110102;
+  }
+
+  .page-footer {
+    background-color: #110102;
+}
+
+.red {
+  background-color: #0C0E0D !important;
+}

@@ -7,14 +7,14 @@ const Dashboard = () => {
     <div>
       <div>
         <div style={{ textAlign: 'center'}}>
-        <div class="row">
-          <div class="col s12 m7 l12">
-            <div class="card">
-              <div class="card-content">
+        <div className="row">
+          <div className="col s12 m7 l12">
+            <div className="card">
+              <div className="card-content">
                 <h1>Dashboard</h1>
               </div>
-              <div class="card-action">
-                <a href="">Emaily - Survey</a>
+              <div className="card-action">
+                <h5>Emaily - Survey</h5>
               </div>
             </div>
           </div>

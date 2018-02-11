@@ -7,10 +7,10 @@ const Landing = () => {
         <div class="col s12 m7 l12">
           <div class="card">
             <div class="card-content">
-              <h1>Collect feed back from your users today!</h1>
+              <h3>Collect feed back from your users today!</h3>
             </div>
             <div class="card-action">
-              <a href="">Emaily - Survey</a>
+              <h5 >Emaily - Survey</h5>
             </div>
           </div>
         </div>
@@ -23,10 +23,6 @@ const Landing = () => {
               <span class="card-title">Survey</span>
               <p>You have a survey in mind? let us handle it for you while you relax and get notified on how well your business is doing.</p>
             </div>
-            <div class="card-action">
-              <a href="">Emaily Survey</a>
-              <a href="">Emaily Survey</a>
-            </div>
           </div>
         </div>
 
@@ -36,10 +32,6 @@ const Landing = () => {
               <span class="card-title">Feedback</span>
               <p>You want quick feedback on all your campaign and product release? Emaily will deliver immediate feedback from your users right at your door step.
               </p>
-            </div>
-            <div class="card-action">
-              <a href="">Emaily Survey</a>
-              <a href="">Emaily Survey</a>
             </div>
           </div>
         </div>

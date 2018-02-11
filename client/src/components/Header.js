@@ -43,7 +43,7 @@ class Header extends Component {
 
   render () {
     return (
-      <div>
+      <div style={{ backgroundColor: '#110102'}}>
         <nav>
            <div className="container">
             <div className="nav-wrapper">

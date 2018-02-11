@@ -9,8 +9,8 @@ class Billings extends Component {
     return (
       <div>
         <StripeCheckout 
-          name="Emaily-Survey"
-          description="Get value for every penny"
+          name="$5 for 5 email credits"
+          description="Test Card: 4242 4242 4242 4242"
           amount={500} 
           token={token => this.props.handleToken(token)} 
           stripeKey={process.env.REACT_APP_STRIPE_KEY}    
