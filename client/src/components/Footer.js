@@ -14,9 +14,6 @@ const Footer = () => {
               <h5 className="white-text">Emaily</h5>
               <ul>
                 <li><a className="grey-text text-lighten-3" href="#!">Socials</a></li>
-                <li><a className="grey-text text-lighten-3" href="#!">Socials</a></li>
-                <li><a className="grey-text text-lighten-3" href="#!">Socials</a></li>
-                <li><a className="grey-text text-lighten-3" href="#!">Socials</a></li>
               </ul>
             </div>
           </div>
